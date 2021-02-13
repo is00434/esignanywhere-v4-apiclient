@@ -13,29 +13,17 @@
 
 package osplus.esignanywhere.v4.model;
 
-import java.util.Objects;
-import java.util.Arrays;
-import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonTypeName;
-import com.fasterxml.jackson.annotation.JsonValue;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
 import java.util.List;
-import osplus.esignanywhere.v4.model.AuditingToolsConfiguration;
-import osplus.esignanywhere.v4.model.AuthenticationMethods;
-import osplus.esignanywhere.v4.model.FinishAction;
-import osplus.esignanywhere.v4.model.IntroTexts;
-import osplus.esignanywhere.v4.model.Policy;
-import osplus.esignanywhere.v4.model.ReceiverInformation;
-import osplus.esignanywhere.v4.model.ResourceUris;
-import osplus.esignanywhere.v4.model.SenderInformation;
-import osplus.esignanywhere.v4.model.SignatureConfiguration;
-import osplus.esignanywhere.v4.model.TransactionCodeConfiguration;
-import osplus.esignanywhere.v4.model.ViewerPreferences;
+import java.util.Objects;
+
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 
 /**
  * The workstep configuration used to create the workstep.

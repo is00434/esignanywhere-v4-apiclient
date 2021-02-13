@@ -13,20 +13,20 @@
 
 package osplus.esignanywhere.v4.model;
 
-import java.util.Objects;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
+import java.util.Objects;
+
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
+
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import java.util.ArrayList;
-import java.util.List;
-import osplus.esignanywhere.v4.model.AutomatedDelegationSettings;
-import osplus.esignanywhere.v4.model.UserAuthentication;
-import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 /**
  * This object is used for updating an existing user.   Properties, which are not set will not change the existing value.
