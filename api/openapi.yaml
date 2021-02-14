@@ -4,7 +4,7 @@ info:
   version: V4.0
   x-swagger-net-version: 8.3.22.202
 servers:
-- url: http://v993stwmvdx202.v993dtvd.v993.intern/Api
+- url: http://localhost/Api
 tags:
 - name: Authorization
 - name: Envelope
