@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 
 import org.springframework.http.HttpRequest;
 import org.springframework.http.HttpStatus;
@@ -45,10 +46,32 @@ public class ESignAnywhereClient {
         private String basePath;
         private Map<String, String> headers = new HashMap<>();
 
-        private Builder() {}
+        private Builder() {
+            setDspSessionId(UUID.randomUUID().toString());
+        }
 
         public Builder setBasePath(final String basePath) {
             this.basePath = basePath;
+            return this;
+        }
+
+        public Builder setUserLoginName(final String userLoginName) {
+            addHeader("userLoginName", userLoginName);
+            return this;
+        }
+
+        public Builder setOrganizationKey(final String organizationKey) {
+            addHeader("organizationKey", organizationKey);
+            return this;
+        }
+
+        public Builder setApiToken(final String apiToken) {
+            addHeader("ApiToken", apiToken);
+            return this;
+        }
+
+        public Builder setDspSessionId(final String dspSessionId) {
+            addHeader("DSPSessionID", dspSessionId);
             return this;
         }
 
