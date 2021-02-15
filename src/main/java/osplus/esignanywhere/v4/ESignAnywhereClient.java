@@ -37,12 +37,15 @@ public class ESignAnywhereClient {
     private final String basePath;
     private final Map<String, String> headers;
 
+    /**
+     * Builder
+     */
     public static class Builder {
 
         private String basePath;
         private Map<String, String> headers = new HashMap<>();
 
-        public Builder() {}
+        private Builder() {}
 
         public Builder setBasePath(final String basePath) {
             this.basePath = basePath;
