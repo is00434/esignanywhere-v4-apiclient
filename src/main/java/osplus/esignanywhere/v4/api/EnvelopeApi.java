@@ -453,7 +453,7 @@ public class EnvelopeApi {
      * @return File
      * @throws RestClientException if an error occurs while attempting to invoke the API
      */
-    public File envelopeDownloadPageImage(String envelopeId, String docRefNumber, String pageNumber) throws RestClientException {
+    public byte[] envelopeDownloadPageImage(String envelopeId, String docRefNumber, String pageNumber) throws RestClientException {
         return envelopeDownloadPageImageWithHttpInfo(envelopeId, docRefNumber, pageNumber).getBody();
     }
 
@@ -470,7 +470,7 @@ public class EnvelopeApi {
      * @return ResponseEntity&lt;File&gt;
      * @throws RestClientException if an error occurs while attempting to invoke the API
      */
-    public ResponseEntity<File> envelopeDownloadPageImageWithHttpInfo(String envelopeId, String docRefNumber, String pageNumber) throws RestClientException {
+    public ResponseEntity<byte[]> envelopeDownloadPageImageWithHttpInfo(String envelopeId, String docRefNumber, String pageNumber) throws RestClientException {
         Object postBody = null;
         
         // verify the required parameter 'envelopeId' is set
@@ -509,7 +509,7 @@ public class EnvelopeApi {
 
         String[] authNames = new String[] { "organizationKey", "userLoginName" };
 
-        ParameterizedTypeReference<File> returnType = new ParameterizedTypeReference<File>() {};
+        ParameterizedTypeReference<byte[]> returnType = new ParameterizedTypeReference<byte[]>() {};
         return apiClient.invokeAPI(path, HttpMethod.GET, queryParams, postBody, headerParams, cookieParams, formParams, localVarAccept, contentType, authNames, returnType);
     }
     /**

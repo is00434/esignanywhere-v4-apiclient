@@ -20,38 +20,66 @@ import org.springframework.http.client.ClientHttpResponse;
 import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestTemplate;
 
+import osplus.esignanywhere.v4.api.AuthorizationApi;
 import osplus.esignanywhere.v4.api.EnvelopeApi;
+import osplus.esignanywhere.v4.api.LicenseApi;
+import osplus.esignanywhere.v4.api.RecipientApi;
 import osplus.esignanywhere.v4.api.SspFileApi;
+import osplus.esignanywhere.v4.api.TeamApi;
+import osplus.esignanywhere.v4.api.UserApi;
 import osplus.esignanywhere.v4.api.VersionApi;
 import osplus.esignanywhere.v4.invoker.ApiClient;
+import osplus.esignanywhere.v4.model.CopyDocumentFromTemplateResult;
+import osplus.esignanywhere.v4.model.CreateDraftResult;
+import osplus.esignanywhere.v4.model.CreateUserResult;
+import osplus.esignanywhere.v4.model.DeleteUserReassignDescriptor;
+import osplus.esignanywhere.v4.model.DraftCreateFromTemplateModel;
+import osplus.esignanywhere.v4.model.DraftCreateModel;
+import osplus.esignanywhere.v4.model.EnvelopePrepareModel;
+import osplus.esignanywhere.v4.model.EnvelopeSendFromTemplateModel;
 import osplus.esignanywhere.v4.model.EnvelopeSendModel;
 import osplus.esignanywhere.v4.model.EnvelopeStatus;
+import osplus.esignanywhere.v4.model.ExtendedFindEnvelopesResult;
+import osplus.esignanywhere.v4.model.ExtendedFindUsersResult;
+import osplus.esignanywhere.v4.model.ExtendedFindUsersResultEntry;
+import osplus.esignanywhere.v4.model.FindEnvelopesDescriptor;
+import osplus.esignanywhere.v4.model.FindUsersDescriptor;
 import osplus.esignanywhere.v4.model.FlowApiResult;
+import osplus.esignanywhere.v4.model.LicenseInformation;
+import osplus.esignanywhere.v4.model.PrepareSendEnvelopeStepsResult;
+import osplus.esignanywhere.v4.model.ReplaceRecipientData;
 import osplus.esignanywhere.v4.model.SendEnvelopeResult;
+import osplus.esignanywhere.v4.model.SendRemindersResult;
+import osplus.esignanywhere.v4.model.Teams;
 import osplus.esignanywhere.v4.model.UploadSspFileResult;
+import osplus.esignanywhere.v4.model.UserCreateModel;
+import osplus.esignanywhere.v4.model.UserUpdateDescription;
 
 /**
  * ESignAnywhereClient.
  */
 public class ESignAnywhereClient {
 
-    private final String basePath;
-    private final Map<String, String> headers;
+    private String basePath = null;
+    private final Map<String, String> headers = new HashMap<>();
 
     /**
      * Builder
      */
     public static class Builder {
 
-        private String basePath;
-        private Map<String, String> headers = new HashMap<>();
+        private final ESignAnywhereClient client;
 
         private Builder() {
+            client = new ESignAnywhereClient();
             setDspSessionId(UUID.randomUUID().toString());
         }
 
         public Builder setBasePath(final String basePath) {
-            this.basePath = basePath;
+            if (basePath == null || basePath.isEmpty()) {
+                throw new IllegalArgumentException("Argument basePath is null or empty");
+            }
+            client.basePath = basePath;
             return this;
         }
 
@@ -76,12 +104,21 @@ public class ESignAnywhereClient {
         }
 
         public Builder addHeader(final String header, final String value) {
-            headers.put(header, value);
+            if (header == null || header.isEmpty()) {
+                throw new IllegalArgumentException("Argument header is null or empty");
+            }
+            if (value == null || value.isEmpty()) {
+                client.headers.remove(header);
+            } else {
+                client.headers.put(header, value);
+            }
             return this;
         }
 
         public ESignAnywhereClient build() {
-            final ESignAnywhereClient client = new ESignAnywhereClient(basePath, headers);
+            if (client.basePath == null) {
+                throw new IllegalStateException("Base path not initialized");
+            }
             return client;
         }
     }
@@ -90,12 +127,65 @@ public class ESignAnywhereClient {
         return new Builder();
     }
 
-    private ESignAnywhereClient(final String basePath, final Map<String, String> headers) {
-        this.basePath = basePath;
-        this.headers = headers;
+    private ESignAnywhereClient() {}
+
+    public boolean validateAuthorization() {
+        boolean validAuthorization = true;
+        try {
+            getAuthorizationApi().authorizationValidate();
+        } catch (final RestClientException e) {
+            validAuthorization = false;
+        }
+        return validAuthorization;
     }
 
-    public EnvelopeStatus getEnvelopeStatus(final String envelopeId) throws ESignAnywhereClientException {
+    public void cancelEnvelope(final String envelopeId) 
+            throws ESignAnywhereClientException {
+        try {
+            getEnvelopeApi().envelopeCancel(envelopeId);
+        } catch (final RestClientException e) {
+            throw new ESignAnywhereClientException(e.getMessage());
+        }
+    }
+
+    public CopyDocumentFromTemplateResult copyEnvelopeFromTempalte(final String templateId)
+            throws ESignAnywhereClientException {
+        try {
+            return getEnvelopeApi().envelopeCopyFromTemplate(templateId);
+        } catch (final RestClientException e) {
+            throw new ESignAnywhereClientException(e.getMessage());
+        }
+    }
+
+    public CreateDraftResult createEnvelope(final DraftCreateModel draftCreateModel)
+            throws ESignAnywhereClientException {
+        try {
+            return getEnvelopeApi().envelopeCreate(draftCreateModel);
+        } catch (final RestClientException e) {
+            throw new ESignAnywhereClientException(e.getMessage());
+        }
+    }
+
+    public CreateDraftResult createEnvelopeFromTemplate(final DraftCreateFromTemplateModel createFromTemplateModel)
+            throws ESignAnywhereClientException {
+        try {
+            return getEnvelopeApi().envelopeCreateFromTemplate(createFromTemplateModel);
+        } catch (final RestClientException e) {
+            throw new ESignAnywhereClientException(e.getMessage());
+        }
+    }
+
+    public void deleteEnvelope(final String envelopeId) 
+            throws ESignAnywhereClientException {
+        try {
+            getEnvelopeApi().envelopeDelete(envelopeId);
+        } catch (final RestClientException e) {
+            throw new ESignAnywhereClientException(e.getMessage());
+        }
+    }
+
+    public EnvelopeStatus queryEnvelopeStatus(final String envelopeId) 
+            throws ESignAnywhereClientException {
         try {
             return getEnvelopeApi().envelopeById(envelopeId);
         } catch (final RestClientException e) {
@@ -103,7 +193,8 @@ public class ESignAnywhereClient {
         }
     }
 
-    public SendEnvelopeResult sendEnvelope(final EnvelopeSendModel sendModel) throws ESignAnywhereClientException {
+    public SendEnvelopeResult sendEnvelope(final EnvelopeSendModel sendModel) 
+            throws ESignAnywhereClientException {
         try {
             return getEnvelopeApi().envelopeSend(sendModel);
         } catch (final RestClientException e) {
@@ -111,7 +202,8 @@ public class ESignAnywhereClient {
         }
     }
 
-    public byte[] downloadCompletedDocument(final String documentId) throws ESignAnywhereClientException {
+    public byte[] downloadCompletedDocument(final String documentId) 
+            throws ESignAnywhereClientException {
         try {
             return getEnvelopeApi().envelopeDownloadCompletedDocument(documentId);
         } catch (final RestClientException e) {
@@ -119,7 +211,98 @@ public class ESignAnywhereClient {
         }
     }
 
-    public UploadSspFileResult uploadFile(final File file) throws ESignAnywhereClientException {
+    public byte[] downloadPageImage(final String envelopeId, final String docRefNumber, final String pageNumber)
+            throws ESignAnywhereClientException {
+        try {
+            return getEnvelopeApi().envelopeDownloadPageImage(envelopeId, docRefNumber, pageNumber);
+        } catch (final RestClientException e) {
+            throw new ESignAnywhereClientException(e.getMessage());
+        }
+    }
+
+    public ExtendedFindEnvelopesResult findEnvelope(final FindEnvelopesDescriptor descriptor)
+            throws ESignAnywhereClientException {
+        try {
+            return getEnvelopeApi().envelopeFind(descriptor);
+        } catch (final RestClientException e) {
+            throw new ESignAnywhereClientException(e.getMessage());
+        }
+    }
+
+    public PrepareSendEnvelopeStepsResult prepareEnvelope(final EnvelopePrepareModel prepareModel)
+            throws ESignAnywhereClientException {
+        try {
+            return getEnvelopeApi().envelopePrepare(prepareModel);
+        } catch (final RestClientException e) {
+            throw new ESignAnywhereClientException(e.getMessage());
+        }
+    }
+
+    public SendRemindersResult remindeEnvelope(final String envelopeId)
+            throws ESignAnywhereClientException {
+        try {
+            return getEnvelopeApi().envelopeRemind(envelopeId);
+        } catch (final RestClientException e) {
+            throw new ESignAnywhereClientException(e.getMessage());
+        }
+    }
+
+    public void restartEnvelope(final String envelopeId, final int expirationInDays)
+            throws ESignAnywhereClientException {
+        try {
+            getEnvelopeApi().envelopeRestart(envelopeId, expirationInDays);
+        } catch (final RestClientException e) {
+            throw new ESignAnywhereClientException(e.getMessage());
+        }
+    }
+
+    public SendEnvelopeResult sendEnvelopeFromTemplate(final EnvelopeSendFromTemplateModel sendFromTemplateModel)
+            throws ESignAnywhereClientException {
+        try {
+            return getEnvelopeApi().envelopeSendFromTemplate(sendFromTemplateModel);
+        } catch (final RestClientException e) {
+            throw new ESignAnywhereClientException(e.getMessage());
+        }
+    }
+
+    public void unlockEnvelope(final String envelopeId)
+            throws ESignAnywhereClientException {
+        try {
+            getEnvelopeApi().envelopeUnlock(envelopeId);
+        } catch (final RestClientException e) {
+            throw new ESignAnywhereClientException(e.getMessage());
+        }
+    }
+
+    public LicenseInformation getLicense(final String envelopeId)
+            throws ESignAnywhereClientException {
+        try {
+            return getLicenseApi().licenseGet();
+        } catch (final RestClientException e) {
+            throw new ESignAnywhereClientException(e.getMessage());
+        }
+    }
+
+    public void deleteRecipient(final String envelopeId, final String recipientId) 
+            throws ESignAnywhereClientException {
+        try {
+            getRecipientApi().recipientDeleteRecipient(envelopeId, recipientId);
+        } catch (final RestClientException e) {
+            throw new ESignAnywhereClientException(e.getMessage());
+        }    
+    }    
+
+    public void replaceRecipient(final String envelopeId, final String recipientId, final ReplaceRecipientData recipient)
+            throws ESignAnywhereClientException {
+        try {
+            getRecipientApi().recipientReplace(envelopeId, recipientId, recipient);
+        } catch (final RestClientException e) {
+            throw new ESignAnywhereClientException(e.getMessage());
+        }            
+    }
+
+    public UploadSspFileResult uploadFile(final File file) 
+            throws ESignAnywhereClientException {
         try {
             return getSspFileApi().sspFileUploadTemporary(file);
         } catch (final RestClientException e) {
@@ -127,7 +310,8 @@ public class ESignAnywhereClient {
         }
     }
 
-    public UploadSspFileResult uploadFile(final String filename, final byte[] content) throws ESignAnywhereClientException {
+    public UploadSspFileResult uploadFile(final String filename, final byte[] content) 
+            throws ESignAnywhereClientException {
         try {
             return getSspFileApi().sspFileUploadTemporaryFromByteArray(filename, content);
         } catch (final RestClientException e) {
@@ -135,7 +319,89 @@ public class ESignAnywhereClient {
         }
     }
 
-    public FlowApiResult getVersion() throws ESignAnywhereClientException {
+    public void disposeFile(final String sspFileId) 
+            throws ESignAnywhereClientException {
+        try {
+            getSspFileApi().sspFileDisposeFile(sspFileId);
+        } catch (final RestClientException e) {
+            throw new ESignAnywhereClientException(e.getMessage());
+        }
+    }
+
+    public Teams getTeams() 
+            throws ESignAnywhereClientException {
+        try {
+            return getTeamApi().teamGet();
+        } catch (final RestClientException e) {
+            throw new ESignAnywhereClientException(e.getMessage());
+        }
+    }
+
+    public void setTeams(final Teams teams) 
+            throws ESignAnywhereClientException {
+        try {
+            getTeamApi().teamSet(teams);
+        } catch (final RestClientException e) {
+            throw new ESignAnywhereClientException(e.getMessage());
+        }
+    }
+
+    public CreateUserResult createUser(final UserCreateModel model)
+            throws ESignAnywhereClientException {
+        try {
+            return getUserApi().userCreate(model);
+        } catch (final RestClientException e) {
+            throw new ESignAnywhereClientException(e.getMessage());
+        }
+    }
+    
+    public void deleteUser(final String userId, final DeleteUserReassignDescriptor reassignDescriptor)
+            throws ESignAnywhereClientException {
+        try {
+            getUserApi().userDelete(userId, reassignDescriptor);
+        } catch (final RestClientException e) {
+            throw new ESignAnywhereClientException(e.getMessage());
+        }
+    }
+
+    public ExtendedFindUsersResult findUser(final FindUsersDescriptor findUsersDescriptor) 
+            throws ESignAnywhereClientException {
+        try {
+            return getUserApi().userFindV2(findUsersDescriptor);
+        } catch (final RestClientException e) {
+            throw new ESignAnywhereClientException(e.getMessage());
+        }
+    }
+    
+    public ExtendedFindUsersResultEntry getUserByEmail(final String email) 
+            throws ESignAnywhereClientException {
+        try {
+            return getUserApi().userGetUserByEmail(email);
+        } catch (final RestClientException e) {
+            throw new ESignAnywhereClientException(e.getMessage());
+        }
+    }
+
+    public void updateUser(final String userId, final UserUpdateDescription userUpdateDescription)
+            throws ESignAnywhereClientException {
+        try {
+            getUserApi().userUpdateWithHttpInfo(userId, userUpdateDescription);
+        } catch (final RestClientException e) {
+            throw new ESignAnywhereClientException(e.getMessage());
+        }
+    }
+    
+    public void uploadSignatureImage(final String userId, final File file)
+            throws ESignAnywhereClientException {
+        try {
+            getUserApi().userUploadSignatureImage(userId, file);
+        } catch (final RestClientException e) {
+            throw new ESignAnywhereClientException(e.getMessage());
+        }
+    }
+
+    public FlowApiResult getVersion() 
+            throws ESignAnywhereClientException {
         try {
             return getVersionApi().versionGet();
         } catch (final RestClientException e) {
@@ -231,5 +497,50 @@ public class ESignAnywhereClient {
             envelopeApi = new EnvelopeApi(getApiClient()); 
         }
         return envelopeApi;
+    }
+
+    private AuthorizationApi authorizationApi = null;
+
+    private AuthorizationApi getAuthorizationApi() {
+        if (authorizationApi == null) {
+            authorizationApi = new AuthorizationApi(getApiClient()); 
+        }
+        return authorizationApi;
+    }
+
+    private LicenseApi licenseApi = null;
+
+    private LicenseApi getLicenseApi() {
+        if (licenseApi == null) {
+            licenseApi = new LicenseApi(getApiClient()); 
+        }
+        return licenseApi;
+    }
+
+    private RecipientApi recipientApi = null;
+
+    private RecipientApi getRecipientApi() {
+        if (recipientApi == null) {
+            recipientApi = new RecipientApi(getApiClient()); 
+        }
+        return recipientApi;
+    }
+
+    private TeamApi teamApi = null;
+
+    private TeamApi getTeamApi() {
+        if (teamApi == null) {
+            teamApi = new TeamApi(getApiClient()); 
+        }
+        return teamApi;
+    }
+
+    private UserApi userApi = null;
+
+    private UserApi getUserApi() {
+        if (userApi == null) {
+            userApi = new UserApi(getApiClient()); 
+        }
+        return userApi;
     }
 }
