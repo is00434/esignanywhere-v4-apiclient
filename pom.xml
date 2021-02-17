@@ -33,6 +33,37 @@
 
     <build>
         <plugins>
+            <!--
+            <plugin>
+            <groupId>org.openapitools</groupId>
+            <artifactId>openapi-generator-maven-plugin</artifactId>
+            <version>5.0.1</version>
+            <executions>
+                <execution>
+                <goals>
+                    <goal>generate</goal>
+                </goals>
+                <configuration>
+                    <inputSpec>${project.basedir}/src/main/resources/esignanywhere-v4.json</inputSpec>
+                    <apiPackage>osplus.esignanywhere.v4.api</apiPackage>
+                    <modelPackage>osplus.esignanywhere.v4.model</modelPackage>
+                    <invokerPackage>osplus.esignanywhere.v4.invoker</invokerPackage>
+                    <generatorName>java</generatorName>
+                    <dateLibrary>java8</dateLibrary>
+                    <library>resttemplate</library>
+                    <generateModelTests>false</generateModelTests>
+                    <generateApiTests>false</generateApiTests>
+                    <generateSupportingFiles>true</generateSupportingFiles>
+                    <generateModelDocumentation>false</generateModelDocumentation>
+                    <generateApiDocumentation>false</generateApiDocumentation>
+                    <configOptions>
+                    <sourceFolder>src/main/java</sourceFolder>
+                    </configOptions>
+                </configuration>
+                </execution>
+            </executions>
+            </plugin>
+            -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-enforcer-plugin</artifactId>

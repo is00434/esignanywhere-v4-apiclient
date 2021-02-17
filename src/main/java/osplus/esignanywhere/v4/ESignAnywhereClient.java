@@ -21,10 +21,8 @@ import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestTemplate;
 
 import osplus.esignanywhere.v4.api.AuthorizationApi;
-import osplus.esignanywhere.v4.api.EnvelopeApi;
 import osplus.esignanywhere.v4.api.LicenseApi;
 import osplus.esignanywhere.v4.api.RecipientApi;
-import osplus.esignanywhere.v4.api.SspFileApi;
 import osplus.esignanywhere.v4.api.TeamApi;
 import osplus.esignanywhere.v4.api.UserApi;
 import osplus.esignanywhere.v4.api.VersionApi;
@@ -202,7 +200,7 @@ public class ESignAnywhereClient {
         }
     }
 
-    public byte[] downloadCompletedDocument(final String documentId) 
+    public File downloadCompletedDocument(final String documentId) 
             throws ESignAnywhereClientException {
         try {
             return getEnvelopeApi().envelopeDownloadCompletedDocument(documentId);
@@ -211,10 +209,28 @@ public class ESignAnywhereClient {
         }
     }
 
-    public byte[] downloadPageImage(final String envelopeId, final String docRefNumber, final String pageNumber)
+    public byte[] downloadCompletedDocumentAsByteArray(final String documentId) 
+            throws ESignAnywhereClientException {
+        try {
+            return getEnvelopeApi().envelopeDownloadCompletedDocumentAsByteArray(documentId);
+        } catch (final RestClientException e) {
+            throw new ESignAnywhereClientException(e.getMessage());
+        }
+    }
+
+    public File downloadPageImage(final String envelopeId, final String docRefNumber, final String pageNumber)
             throws ESignAnywhereClientException {
         try {
             return getEnvelopeApi().envelopeDownloadPageImage(envelopeId, docRefNumber, pageNumber);
+        } catch (final RestClientException e) {
+            throw new ESignAnywhereClientException(e.getMessage());
+        }
+    }
+
+    public byte[] downloadPageImageAsByteArray(final String envelopeId, final String docRefNumber, final String pageNumber)
+            throws ESignAnywhereClientException {
+        try {
+            return getEnvelopeApi().envelopeDownloadPageImageAsByteArray(envelopeId, docRefNumber, pageNumber);
         } catch (final RestClientException e) {
             throw new ESignAnywhereClientException(e.getMessage());
         }
@@ -481,20 +497,20 @@ public class ESignAnywhereClient {
         return versionApi;
     }
 
-    private SspFileApi sspFileApi = null;
+    private SspFileApi2 sspFileApi = null;
 
-    private SspFileApi getSspFileApi() {
+    private SspFileApi2 getSspFileApi() {
         if (sspFileApi == null) {
-            sspFileApi = new SspFileApi(getApiClient()); 
+            sspFileApi = new SspFileApi2(getApiClient()); 
         }
         return sspFileApi;
     }
 
-    private EnvelopeApi envelopeApi = null;
+    private EnvelopeApi2 envelopeApi = null;
 
-    private EnvelopeApi getEnvelopeApi() {
+    private EnvelopeApi2 getEnvelopeApi() {
         if (envelopeApi == null) {
-            envelopeApi = new EnvelopeApi(getApiClient()); 
+            envelopeApi = new EnvelopeApi2(getApiClient()); 
         }
         return envelopeApi;
     }

@@ -34,7 +34,7 @@ import osplus.esignanywhere.v4.model.PrepareSendEnvelopeStepsResult;
 import osplus.esignanywhere.v4.model.SendEnvelopeResult;
 import osplus.esignanywhere.v4.model.SendRemindersResult;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-02-13T11:25:21.496783+01:00[Europe/Berlin]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-02-17T12:20:17.454180+01:00[Europe/Berlin]")
 @Component("osplus.esignanywhere.v4.api.EnvelopeApi")
 public class EnvelopeApi {
     private ApiClient apiClient;
@@ -392,11 +392,67 @@ public class EnvelopeApi {
      * <p><b>401</b> - Unauthorized
      * <p><b>404</b> - NotFound
      * @param documentId The id of the document you want to download. (required)
+     * @return File
+     * @throws RestClientException if an error occurs while attempting to invoke the API
+     */
+    public File envelopeDownloadCompletedDocument(String documentId) throws RestClientException {
+        return envelopeDownloadCompletedDocumentWithHttpInfo(documentId).getBody();
+    }
+
+    /**
+     * Returns a pdf document for the given id.
+     * 
+     * <p><b>200</b> - OK
+     * <p><b>400</b> - BadRequest
+     * <p><b>401</b> - Unauthorized
+     * <p><b>404</b> - NotFound
+     * @param documentId The id of the document you want to download. (required)
+     * @return ResponseEntity&lt;File&gt;
+     * @throws RestClientException if an error occurs while attempting to invoke the API
+     */
+    public ResponseEntity<File> envelopeDownloadCompletedDocumentWithHttpInfo(String documentId) throws RestClientException {
+        Object postBody = null;
+        
+        // verify the required parameter 'documentId' is set
+        if (documentId == null) {
+            throw new HttpClientErrorException(HttpStatus.BAD_REQUEST, "Missing the required parameter 'documentId' when calling envelopeDownloadCompletedDocument");
+        }
+        
+        // create path and map variables
+        final Map<String, Object> uriVariables = new HashMap<String, Object>();
+        uriVariables.put("documentId", documentId);
+        String path = apiClient.expandPath("/v4.0/envelope/downloadCompletedDocument/{documentId}", uriVariables);
+
+        final MultiValueMap<String, String> queryParams = new LinkedMultiValueMap<String, String>();
+        final HttpHeaders headerParams = new HttpHeaders();
+        final MultiValueMap<String, String> cookieParams = new LinkedMultiValueMap<String, String>();
+        final MultiValueMap<String, Object> formParams = new LinkedMultiValueMap<String, Object>();
+
+        final String[] localVarAccepts = { 
+            "application/octet-stream", "text/json", "application/json"
+         };
+        final List<MediaType> localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        final String[] contentTypes = {  };
+        final MediaType contentType = apiClient.selectHeaderContentType(contentTypes);
+
+        String[] authNames = new String[] { "organizationKey", "userLoginName" };
+
+        ParameterizedTypeReference<File> returnType = new ParameterizedTypeReference<File>() {};
+        return apiClient.invokeAPI(path, HttpMethod.GET, queryParams, postBody, headerParams, cookieParams, formParams, localVarAccept, contentType, authNames, returnType);
+    }
+    /**
+     * Returns a pdf document for the given id.
+     * 
+     * <p><b>200</b> - OK
+     * <p><b>400</b> - BadRequest
+     * <p><b>401</b> - Unauthorized
+     * <p><b>404</b> - NotFound
+     * @param documentId The id of the document you want to download. (required)
      * @return byte[]
      * @throws RestClientException if an error occurs while attempting to invoke the API
      */
-    public byte[] envelopeDownloadCompletedDocument(String documentId) throws RestClientException {
-        return envelopeDownloadCompletedDocumentWithHttpInfo(documentId).getBody();
+    public byte[] envelopeDownloadCompletedDocumentAsByteArray(String documentId) throws RestClientException {
+        return envelopeDownloadCompletedDocumentAsByteArrayWithHttpInfo(documentId).getBody();
     }
 
     /**
@@ -410,18 +466,18 @@ public class EnvelopeApi {
      * @return ResponseEntity&lt;byte[]&gt;
      * @throws RestClientException if an error occurs while attempting to invoke the API
      */
-    public ResponseEntity<byte[]> envelopeDownloadCompletedDocumentWithHttpInfo(String documentId) throws RestClientException {
+    public ResponseEntity<byte[]> envelopeDownloadCompletedDocumentAsByteArrayWithHttpInfo(String documentId) throws RestClientException {
         Object postBody = null;
         
         // verify the required parameter 'documentId' is set
         if (documentId == null) {
-            throw new HttpClientErrorException(HttpStatus.BAD_REQUEST, "Missing the required parameter 'documentId' when calling envelopeDownloadCompletedDocument");
+            throw new HttpClientErrorException(HttpStatus.BAD_REQUEST, "Missing the required parameter 'documentId' when calling envelopeDownloadCompletedDocumentAsByteArray");
         }
         
         // create path and map variables
         final Map<String, Object> uriVariables = new HashMap<String, Object>();
         uriVariables.put("documentId", documentId);
-        String path = apiClient.expandPath("/v4.0/envelope/downloadCompletedDocument/{documentId}", uriVariables);
+        String path = apiClient.expandPath("/v4.0/envelope/downloadCompletedDocumentAsByteArray/{documentId}", uriVariables);
 
         final MultiValueMap<String, String> queryParams = new LinkedMultiValueMap<String, String>();
         final HttpHeaders headerParams = new HttpHeaders();
@@ -453,7 +509,7 @@ public class EnvelopeApi {
      * @return File
      * @throws RestClientException if an error occurs while attempting to invoke the API
      */
-    public byte[] envelopeDownloadPageImage(String envelopeId, String docRefNumber, String pageNumber) throws RestClientException {
+    public File envelopeDownloadPageImage(String envelopeId, String docRefNumber, String pageNumber) throws RestClientException {
         return envelopeDownloadPageImageWithHttpInfo(envelopeId, docRefNumber, pageNumber).getBody();
     }
 
@@ -470,7 +526,7 @@ public class EnvelopeApi {
      * @return ResponseEntity&lt;File&gt;
      * @throws RestClientException if an error occurs while attempting to invoke the API
      */
-    public ResponseEntity<byte[]> envelopeDownloadPageImageWithHttpInfo(String envelopeId, String docRefNumber, String pageNumber) throws RestClientException {
+    public ResponseEntity<File> envelopeDownloadPageImageWithHttpInfo(String envelopeId, String docRefNumber, String pageNumber) throws RestClientException {
         Object postBody = null;
         
         // verify the required parameter 'envelopeId' is set
@@ -494,6 +550,78 @@ public class EnvelopeApi {
         uriVariables.put("docRefNumber", docRefNumber);
         uriVariables.put("pageNumber", pageNumber);
         String path = apiClient.expandPath("/v4.0/envelope/{envelopeId}/downloadPageImage/{docRefNumber}/{pageNumber}", uriVariables);
+
+        final MultiValueMap<String, String> queryParams = new LinkedMultiValueMap<String, String>();
+        final HttpHeaders headerParams = new HttpHeaders();
+        final MultiValueMap<String, String> cookieParams = new LinkedMultiValueMap<String, String>();
+        final MultiValueMap<String, Object> formParams = new LinkedMultiValueMap<String, Object>();
+
+        final String[] localVarAccepts = { 
+            "application/octet-stream", "text/json", "application/json"
+         };
+        final List<MediaType> localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        final String[] contentTypes = {  };
+        final MediaType contentType = apiClient.selectHeaderContentType(contentTypes);
+
+        String[] authNames = new String[] { "organizationKey", "userLoginName" };
+
+        ParameterizedTypeReference<File> returnType = new ParameterizedTypeReference<File>() {};
+        return apiClient.invokeAPI(path, HttpMethod.GET, queryParams, postBody, headerParams, cookieParams, formParams, localVarAccept, contentType, authNames, returnType);
+    }
+    /**
+     * Returns a png image for the given page.
+     * 
+     * <p><b>200</b> - OK
+     * <p><b>400</b> - BadRequest
+     * <p><b>401</b> - Unauthorized
+     * <p><b>404</b> - NotFound
+     * @param envelopeId The id for the envelope. NO Bulk id. (required)
+     * @param docRefNumber The document number (starting with 1) (required)
+     * @param pageNumber The page number (starting with 1) (required)
+     * @return byte[]
+     * @throws RestClientException if an error occurs while attempting to invoke the API
+     */
+    public byte[] envelopeDownloadPageImageAsByteArray(String envelopeId, String docRefNumber, String pageNumber) throws RestClientException {
+        return envelopeDownloadPageImageAsByteArrayWithHttpInfo(envelopeId, docRefNumber, pageNumber).getBody();
+    }
+
+    /**
+     * Returns a png image for the given page.
+     * 
+     * <p><b>200</b> - OK
+     * <p><b>400</b> - BadRequest
+     * <p><b>401</b> - Unauthorized
+     * <p><b>404</b> - NotFound
+     * @param envelopeId The id for the envelope. NO Bulk id. (required)
+     * @param docRefNumber The document number (starting with 1) (required)
+     * @param pageNumber The page number (starting with 1) (required)
+     * @return ResponseEntity&lt;byte[]&gt;
+     * @throws RestClientException if an error occurs while attempting to invoke the API
+     */
+    public ResponseEntity<byte[]> envelopeDownloadPageImageAsByteArrayWithHttpInfo(String envelopeId, String docRefNumber, String pageNumber) throws RestClientException {
+        Object postBody = null;
+        
+        // verify the required parameter 'envelopeId' is set
+        if (envelopeId == null) {
+            throw new HttpClientErrorException(HttpStatus.BAD_REQUEST, "Missing the required parameter 'envelopeId' when calling envelopeDownloadPageImageAsByteArray");
+        }
+        
+        // verify the required parameter 'docRefNumber' is set
+        if (docRefNumber == null) {
+            throw new HttpClientErrorException(HttpStatus.BAD_REQUEST, "Missing the required parameter 'docRefNumber' when calling envelopeDownloadPageImageAsByteArray");
+        }
+        
+        // verify the required parameter 'pageNumber' is set
+        if (pageNumber == null) {
+            throw new HttpClientErrorException(HttpStatus.BAD_REQUEST, "Missing the required parameter 'pageNumber' when calling envelopeDownloadPageImageAsByteArray");
+        }
+        
+        // create path and map variables
+        final Map<String, Object> uriVariables = new HashMap<String, Object>();
+        uriVariables.put("envelopeId", envelopeId);
+        uriVariables.put("docRefNumber", docRefNumber);
+        uriVariables.put("pageNumber", pageNumber);
+        String path = apiClient.expandPath("/v4.0/envelope/{envelopeId}/downloadPageImageAsByteArray/{docRefNumber}/{pageNumber}", uriVariables);
 
         final MultiValueMap<String, String> queryParams = new LinkedMultiValueMap<String, String>();
         final HttpHeaders headerParams = new HttpHeaders();

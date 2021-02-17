@@ -9,8 +9,6 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.core.io.FileSystemResource;
-import org.springframework.http.ContentDisposition;
-import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
@@ -25,7 +23,7 @@ import org.springframework.web.client.RestClientException;
 import osplus.esignanywhere.v4.invoker.ApiClient;
 import osplus.esignanywhere.v4.model.UploadSspFileResult;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-02-13T11:25:21.496783+01:00[Europe/Berlin]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-02-17T12:20:17.454180+01:00[Europe/Berlin]")
 @Component("osplus.esignanywhere.v4.api.SspFileApi")
 public class SspFileApi {
     private ApiClient apiClient;
@@ -190,52 +188,41 @@ public class SspFileApi {
      */
     public ResponseEntity<UploadSspFileResult> sspFileUploadTemporaryFromByteArrayWithHttpInfo(String filename, byte[] content) throws RestClientException {
         Object postBody = null;
-
+        
         // verify the required parameter 'filename' is set
-        if (filename == null || filename.isEmpty()) {
-            throw new HttpClientErrorException(HttpStatus.BAD_REQUEST,
-                    "Missing the required parameter 'filename' when calling sspFileUploadTemporary");
+        if (filename == null) {
+            throw new HttpClientErrorException(HttpStatus.BAD_REQUEST, "Missing the required parameter 'filename' when calling sspFileUploadTemporaryFromByteArray");
         }
-
-        final boolean hasPdfExtension = filename.toLowerCase().endsWith(".pdf");
-
+        
         // verify the required parameter 'content' is set
-        if (content == null || content.length == 0) {
-            throw new HttpClientErrorException(HttpStatus.BAD_REQUEST,
-                    "Missing the required parameter 'content' when calling sspFileUploadTemporary");
+        if (content == null) {
+            throw new HttpClientErrorException(HttpStatus.BAD_REQUEST, "Missing the required parameter 'content' when calling sspFileUploadTemporaryFromByteArray");
         }
-
-        final String path = getApiClient().expandPath("/v4.0/sspfile/uploadtemporary",
-                Collections.<String, Object>emptyMap());
+        
+        String path = apiClient.expandPath("/v4.0/sspfile/uploadtemporaryfrombytearray", Collections.<String, Object>emptyMap());
 
         final MultiValueMap<String, String> queryParams = new LinkedMultiValueMap<String, String>();
         final HttpHeaders headerParams = new HttpHeaders();
         final MultiValueMap<String, String> cookieParams = new LinkedMultiValueMap<String, String>();
         final MultiValueMap<String, Object> formParams = new LinkedMultiValueMap<String, Object>();
 
-        final MultiValueMap<String, String> fileMap = new LinkedMultiValueMap<>();
-        final ContentDisposition contentDisposition = ContentDisposition.builder("form-data").name("file")
-                .filename(filename).build();
-        fileMap.add(HttpHeaders.CONTENT_DISPOSITION, contentDisposition.toString());
-        if (hasPdfExtension) {
-            fileMap.add(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_PDF_VALUE);
-        }
+        if (filename != null)
+            formParams.add("Filename", filename);
+        if (content != null)
+            formParams.add("Content", content);
 
-        final HttpEntity<byte[]> fileEntity = new HttpEntity<>(content, fileMap);
-        formParams.add("file", fileEntity);
-
-        final String[] localVarAccepts = { "application/json", "text/json" };
+        final String[] localVarAccepts = { 
+            "application/json", "text/json"
+         };
         final List<MediaType> localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
-
-        final String[] contentTypes = { "multipart/form-data" };
+        final String[] contentTypes = { 
+            "multipart/form-data"
+         };
         final MediaType contentType = apiClient.selectHeaderContentType(contentTypes);
 
-        final String[] authNames = new String[] { "organizationKey", "userLoginName" };
+        String[] authNames = new String[] { "organizationKey", "userLoginName" };
 
-        final ParameterizedTypeReference<UploadSspFileResult> returnType = new ParameterizedTypeReference<UploadSspFileResult>() {
-        };
-        return apiClient.invokeAPI(path, HttpMethod.POST, queryParams, postBody, headerParams, cookieParams,
-                formParams, localVarAccept, contentType, authNames, returnType);
+        ParameterizedTypeReference<UploadSspFileResult> returnType = new ParameterizedTypeReference<UploadSspFileResult>() {};
+        return apiClient.invokeAPI(path, HttpMethod.POST, queryParams, postBody, headerParams, cookieParams, formParams, localVarAccept, contentType, authNames, returnType);
     }
 }
-

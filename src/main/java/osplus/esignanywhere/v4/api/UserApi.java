@@ -29,7 +29,7 @@ import osplus.esignanywhere.v4.model.FindUsersDescriptor;
 import osplus.esignanywhere.v4.model.UserCreateModel;
 import osplus.esignanywhere.v4.model.UserUpdateDescription;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-02-13T11:25:21.496783+01:00[Europe/Berlin]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-02-17T12:20:17.454180+01:00[Europe/Berlin]")
 @Component("osplus.esignanywhere.v4.api.UserApi")
 public class UserApi {
     private ApiClient apiClient;
@@ -395,6 +395,75 @@ public class UserApi {
 
         if (file != null)
             formParams.add("File", new FileSystemResource(file));
+
+        final String[] localVarAccepts = { 
+            "application/json", "text/json"
+         };
+        final List<MediaType> localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        final String[] contentTypes = { 
+            "multipart/form-data"
+         };
+        final MediaType contentType = apiClient.selectHeaderContentType(contentTypes);
+
+        String[] authNames = new String[] { "organizationKey", "userLoginName" };
+
+        ParameterizedTypeReference<Void> returnType = new ParameterizedTypeReference<Void>() {};
+        return apiClient.invokeAPI(path, HttpMethod.POST, queryParams, postBody, headerParams, cookieParams, formParams, localVarAccept, contentType, authNames, returnType);
+    }
+    /**
+     * Replaces the signature image.
+     * 
+     * <p><b>204</b> - NoContent
+     * <p><b>400</b> - BadRequest
+     * <p><b>401</b> - Unauthorized
+     * <p><b>404</b> - NotFound
+     * <p><b>415</b> - UnsupportedMediaType
+     * @param userId The id of the user whos signature image should be replaced. (required)
+     * @param file Upload software package (required)
+     * @throws RestClientException if an error occurs while attempting to invoke the API
+     */
+    public void userUploadSignatureImageFromByteArray(String userId, byte[] file) throws RestClientException {
+        userUploadSignatureImageFromByteArrayWithHttpInfo(userId, file);
+    }
+
+    /**
+     * Replaces the signature image.
+     * 
+     * <p><b>204</b> - NoContent
+     * <p><b>400</b> - BadRequest
+     * <p><b>401</b> - Unauthorized
+     * <p><b>404</b> - NotFound
+     * <p><b>415</b> - UnsupportedMediaType
+     * @param userId The id of the user whos signature image should be replaced. (required)
+     * @param file Upload software package (required)
+     * @return ResponseEntity&lt;Void&gt;
+     * @throws RestClientException if an error occurs while attempting to invoke the API
+     */
+    public ResponseEntity<Void> userUploadSignatureImageFromByteArrayWithHttpInfo(String userId, byte[] file) throws RestClientException {
+        Object postBody = null;
+        
+        // verify the required parameter 'userId' is set
+        if (userId == null) {
+            throw new HttpClientErrorException(HttpStatus.BAD_REQUEST, "Missing the required parameter 'userId' when calling userUploadSignatureImageFromByteArray");
+        }
+        
+        // verify the required parameter 'file' is set
+        if (file == null) {
+            throw new HttpClientErrorException(HttpStatus.BAD_REQUEST, "Missing the required parameter 'file' when calling userUploadSignatureImageFromByteArray");
+        }
+        
+        // create path and map variables
+        final Map<String, Object> uriVariables = new HashMap<String, Object>();
+        uriVariables.put("userId", userId);
+        String path = apiClient.expandPath("/v4.0/user/{userId}/uploadSignatureImageFromByteArray", uriVariables);
+
+        final MultiValueMap<String, String> queryParams = new LinkedMultiValueMap<String, String>();
+        final HttpHeaders headerParams = new HttpHeaders();
+        final MultiValueMap<String, String> cookieParams = new LinkedMultiValueMap<String, String>();
+        final MultiValueMap<String, Object> formParams = new LinkedMultiValueMap<String, Object>();
+
+        if (file != null)
+            formParams.add("File", file);
 
         final String[] localVarAccepts = { 
             "application/json", "text/json"
