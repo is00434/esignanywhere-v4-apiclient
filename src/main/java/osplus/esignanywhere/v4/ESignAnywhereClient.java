@@ -12,6 +12,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 import org.springframework.http.HttpRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.client.ClientHttpRequestExecution;
@@ -52,6 +54,7 @@ import osplus.esignanywhere.v4.model.Teams;
 import osplus.esignanywhere.v4.model.UploadSspFileResult;
 import osplus.esignanywhere.v4.model.UserCreateModel;
 import osplus.esignanywhere.v4.model.UserUpdateDescription;
+import osplus.esignanywhere.v4.model.Error;
 
 /**
  * ESignAnywhereClient.
@@ -456,8 +459,15 @@ public class ESignAnywhereClient {
                 if (!httpStatus.is2xxSuccessful()) {
                     if (httpStatus == HttpStatus.UNAUTHORIZED) {
                         throw new ESignAnywhereClientException(httpStatus.value(), httpStatus.getReasonPhrase());
-                    } 
-                    throw new ESignAnywhereClientException(httpStatus.value(), bodyToString(response.getBody()));
+                    } else {
+                        final String body = bodyToString(response.getBody());
+                        if (httpStatus == HttpStatus.BAD_REQUEST) {
+                            final ObjectMapper mapper = new ObjectMapper();
+                            final Error error = mapper.readValue(body, Error.class);
+                            throw new ESignAnywhereClientException(httpStatus.value(), error); 
+                        } 
+                        throw new ESignAnywhereClientException(httpStatus.value(), body);
+                    }
                 }
             } catch (final IOException e) {
                 throw new ESignAnywhereClientException("Failed to evaluate response", e);
