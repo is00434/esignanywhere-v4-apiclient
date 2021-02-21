@@ -145,7 +145,7 @@ public class ESignAnywhereClient {
         try {
             getEnvelopeApi().envelopeCancel(envelopeId);
         } catch (final RestClientException e) {
-            throw new ESignAnywhereClientException(e.getMessage());
+            throw new ESignAnywhereClientException(Messages.getMessage("failed.to.cancel.envelope"), e);
         }
     }
 
@@ -154,7 +154,7 @@ public class ESignAnywhereClient {
         try {
             return getEnvelopeApi().envelopeCopyFromTemplate(templateId);
         } catch (final RestClientException e) {
-            throw new ESignAnywhereClientException(e.getMessage());
+            throw new ESignAnywhereClientException(Messages.getMessage("failed.to.copy.envelope.from.template"), e);
         }
     }
 
@@ -163,7 +163,7 @@ public class ESignAnywhereClient {
         try {
             return getEnvelopeApi().envelopeCreate(draftCreateModel);
         } catch (final RestClientException e) {
-            throw new ESignAnywhereClientException(e.getMessage());
+            throw new ESignAnywhereClientException(Messages.getMessage("failed.to.create.envelope"), e);
         }
     }
 
@@ -172,7 +172,7 @@ public class ESignAnywhereClient {
         try {
             return getEnvelopeApi().envelopeCreateFromTemplate(createFromTemplateModel);
         } catch (final RestClientException e) {
-            throw new ESignAnywhereClientException(e.getMessage());
+            throw new ESignAnywhereClientException(Messages.getMessage("failed.to.create.envelope.from.template"), e);
         }
     }
 
@@ -181,7 +181,7 @@ public class ESignAnywhereClient {
         try {
             getEnvelopeApi().envelopeDelete(envelopeId);
         } catch (final RestClientException e) {
-            throw new ESignAnywhereClientException(e.getMessage());
+            throw new ESignAnywhereClientException(Messages.getMessage("failed.to.delete.envelope"), e);
         }
     }
 
@@ -190,7 +190,7 @@ public class ESignAnywhereClient {
         try {
             return getEnvelopeApi().envelopeById(envelopeId);
         } catch (final RestClientException e) {
-            throw new ESignAnywhereClientException(e.getMessage());
+            throw new ESignAnywhereClientException(Messages.getMessage("failed.to.query.envelope.status"), e);
         }
     }
 
@@ -199,7 +199,7 @@ public class ESignAnywhereClient {
         try {
             return getEnvelopeApi().envelopeSend(sendModel);
         } catch (final RestClientException e) {
-            throw new ESignAnywhereClientException(e.getMessage());
+            throw new ESignAnywhereClientException(Messages.getMessage("failed.to.send.envelope"), e);
         }
     }
 
@@ -208,7 +208,7 @@ public class ESignAnywhereClient {
         try {
             return getEnvelopeApi().envelopeDownloadCompletedDocument(documentId);
         } catch (final RestClientException e) {
-            throw new ESignAnywhereClientException(e.getMessage());
+            throw new ESignAnywhereClientException(Messages.getMessage("failed.to.download.completed.document"), e);
         }
     }
 
@@ -217,7 +217,7 @@ public class ESignAnywhereClient {
         try {
             return getEnvelopeApi().envelopeDownloadCompletedDocumentAsByteArray(documentId);
         } catch (final RestClientException e) {
-            throw new ESignAnywhereClientException(e.getMessage());
+            throw new ESignAnywhereClientException(Messages.getMessage("failed.to.download.completed.document"), e);
         }
     }
 
@@ -226,7 +226,7 @@ public class ESignAnywhereClient {
         try {
             return getEnvelopeApi().envelopeDownloadPageImage(envelopeId, docRefNumber, pageNumber);
         } catch (final RestClientException e) {
-            throw new ESignAnywhereClientException(e.getMessage());
+            throw new ESignAnywhereClientException(Messages.getMessage("failed.to.download.page.image"), e);
         }
     }
 
@@ -235,7 +235,7 @@ public class ESignAnywhereClient {
         try {
             return getEnvelopeApi().envelopeDownloadPageImageAsByteArray(envelopeId, docRefNumber, pageNumber);
         } catch (final RestClientException e) {
-            throw new ESignAnywhereClientException(e.getMessage());
+            throw new ESignAnywhereClientException(Messages.getMessage("failed.to.download.page.image"), e);
         }
     }
 
@@ -244,7 +244,7 @@ public class ESignAnywhereClient {
         try {
             return getEnvelopeApi().envelopeFind(descriptor);
         } catch (final RestClientException e) {
-            throw new ESignAnywhereClientException(e.getMessage());
+            throw new ESignAnywhereClientException(Messages.getMessage("failed.to.find.envelope"), e);
         }
     }
 
@@ -253,16 +253,16 @@ public class ESignAnywhereClient {
         try {
             return getEnvelopeApi().envelopePrepare(prepareModel);
         } catch (final RestClientException e) {
-            throw new ESignAnywhereClientException(e.getMessage());
+            throw new ESignAnywhereClientException(Messages.getMessage("failed.to.prepare.envelope"), e);
         }
     }
 
-    public SendRemindersResult remindeEnvelope(final String envelopeId)
+    public SendRemindersResult remindEnvelope(final String envelopeId)
             throws ESignAnywhereClientException {
         try {
             return getEnvelopeApi().envelopeRemind(envelopeId);
         } catch (final RestClientException e) {
-            throw new ESignAnywhereClientException(e.getMessage());
+            throw new ESignAnywhereClientException(Messages.getMessage("failed.to.remind.envelope"), e);
         }
     }
 
@@ -271,7 +271,7 @@ public class ESignAnywhereClient {
         try {
             getEnvelopeApi().envelopeRestart(envelopeId, expirationInDays);
         } catch (final RestClientException e) {
-            throw new ESignAnywhereClientException(e.getMessage());
+            throw new ESignAnywhereClientException(Messages.getMessage("failed.to.restart.envelope"), e);
         }
     }
 
@@ -280,7 +280,7 @@ public class ESignAnywhereClient {
         try {
             return getEnvelopeApi().envelopeSendFromTemplate(sendFromTemplateModel);
         } catch (final RestClientException e) {
-            throw new ESignAnywhereClientException(e.getMessage());
+            throw new ESignAnywhereClientException(Messages.getMessage("failed.to.send.envelope.from.template"), e);
         }
     }
 
@@ -289,7 +289,7 @@ public class ESignAnywhereClient {
         try {
             getEnvelopeApi().envelopeUnlock(envelopeId);
         } catch (final RestClientException e) {
-            throw new ESignAnywhereClientException(e.getMessage());
+            throw new ESignAnywhereClientException(Messages.getMessage("failed.to.unlock.envelope"), e);
         }
     }
 
@@ -298,7 +298,7 @@ public class ESignAnywhereClient {
         try {
             return getLicenseApi().licenseGet();
         } catch (final RestClientException e) {
-            throw new ESignAnywhereClientException(e.getMessage());
+            throw new ESignAnywhereClientException(Messages.getMessage("failed.to.get.license"), e);
         }
     }
 
@@ -307,7 +307,7 @@ public class ESignAnywhereClient {
         try {
             getRecipientApi().recipientDeleteRecipient(envelopeId, recipientId);
         } catch (final RestClientException e) {
-            throw new ESignAnywhereClientException(e.getMessage());
+            throw new ESignAnywhereClientException(Messages.getMessage("failed.to.delete.recipient"), e);
         }    
     }    
 
@@ -316,7 +316,7 @@ public class ESignAnywhereClient {
         try {
             getRecipientApi().recipientReplace(envelopeId, recipientId, recipient);
         } catch (final RestClientException e) {
-            throw new ESignAnywhereClientException(e.getMessage());
+            throw new ESignAnywhereClientException(Messages.getMessage("failed.to.replace.recipient"), e);
         }            
     }
 
@@ -325,7 +325,7 @@ public class ESignAnywhereClient {
         try {
             return getSspFileApi().sspFileUploadTemporary(file);
         } catch (final RestClientException e) {
-            throw new ESignAnywhereClientException(e.getMessage());
+            throw new ESignAnywhereClientException(Messages.getMessage("failed.to.upload.file"), e);
         }
     }
 
@@ -334,7 +334,7 @@ public class ESignAnywhereClient {
         try {
             return getSspFileApi().sspFileUploadTemporaryFromByteArray(filename, content);
         } catch (final RestClientException e) {
-            throw new ESignAnywhereClientException(e.getMessage());
+            throw new ESignAnywhereClientException(Messages.getMessage("failed.to.upload.file"), e);
         }
     }
 
@@ -343,7 +343,7 @@ public class ESignAnywhereClient {
         try {
             getSspFileApi().sspFileDisposeFile(sspFileId);
         } catch (final RestClientException e) {
-            throw new ESignAnywhereClientException(e.getMessage());
+            throw new ESignAnywhereClientException(Messages.getMessage("failed.to.dispose.file"), e);
         }
     }
 
@@ -352,7 +352,7 @@ public class ESignAnywhereClient {
         try {
             return getTeamApi().teamGet();
         } catch (final RestClientException e) {
-            throw new ESignAnywhereClientException(e.getMessage());
+            throw new ESignAnywhereClientException(Messages.getMessage("failed.to.get.teams"), e);
         }
     }
 
@@ -361,7 +361,7 @@ public class ESignAnywhereClient {
         try {
             getTeamApi().teamSet(teams);
         } catch (final RestClientException e) {
-            throw new ESignAnywhereClientException(e.getMessage());
+            throw new ESignAnywhereClientException(Messages.getMessage("failed.to.set.teams"), e);
         }
     }
 
@@ -370,7 +370,7 @@ public class ESignAnywhereClient {
         try {
             return getUserApi().userCreate(model);
         } catch (final RestClientException e) {
-            throw new ESignAnywhereClientException(e.getMessage());
+            throw new ESignAnywhereClientException(Messages.getMessage("failed.to.create.user"), e);
         }
     }
     
@@ -379,7 +379,7 @@ public class ESignAnywhereClient {
         try {
             getUserApi().userDelete(userId, reassignDescriptor);
         } catch (final RestClientException e) {
-            throw new ESignAnywhereClientException(e.getMessage());
+            throw new ESignAnywhereClientException(Messages.getMessage("failed.to.delete.user"), e);
         }
     }
 
@@ -388,7 +388,7 @@ public class ESignAnywhereClient {
         try {
             return getUserApi().userFindV2(findUsersDescriptor);
         } catch (final RestClientException e) {
-            throw new ESignAnywhereClientException(e.getMessage());
+            throw new ESignAnywhereClientException(Messages.getMessage("failed.to.find.user"), e);
         }
     }
     
@@ -397,7 +397,7 @@ public class ESignAnywhereClient {
         try {
             return getUserApi().userGetUserByEmail(email);
         } catch (final RestClientException e) {
-            throw new ESignAnywhereClientException(e.getMessage());
+            throw new ESignAnywhereClientException(Messages.getMessage("failed.to.get.user.by.email"), e);
         }
     }
 
@@ -406,7 +406,7 @@ public class ESignAnywhereClient {
         try {
             getUserApi().userUpdateWithHttpInfo(userId, userUpdateDescription);
         } catch (final RestClientException e) {
-            throw new ESignAnywhereClientException(e.getMessage());
+            throw new ESignAnywhereClientException(Messages.getMessage("failed.to.update.user"), e);
         }
     }
     
@@ -415,7 +415,7 @@ public class ESignAnywhereClient {
         try {
             getUserApi().userUploadSignatureImage(userId, file);
         } catch (final RestClientException e) {
-            throw new ESignAnywhereClientException(e.getMessage());
+            throw new ESignAnywhereClientException(Messages.getMessage("failed.to.upload.signature.image"), e);
         }
     }
 
@@ -424,7 +424,7 @@ public class ESignAnywhereClient {
         try {
             return getVersionApi().versionGet();
         } catch (final RestClientException e) {
-            throw new ESignAnywhereClientException(e.getMessage());
+            throw new ESignAnywhereClientException(Messages.getMessage("failed.to.get.version"), e);
         }
     }
 
@@ -455,24 +455,57 @@ public class ESignAnywhereClient {
 
         private void throwIfNot2xxSuccessful(final ClientHttpResponse response) throws ESignAnywhereClientException {
             try {
-                final HttpStatus httpStatus = HttpStatus.valueOf(response.getRawStatusCode());
-                if (!httpStatus.is2xxSuccessful()) {
-                    if (httpStatus == HttpStatus.UNAUTHORIZED) {
-                        throw new ESignAnywhereClientException(httpStatus.value(), httpStatus.getReasonPhrase());
+                final HttpStatus status = HttpStatus.valueOf(response.getRawStatusCode());
+                if (!status.is2xxSuccessful()) {
+                    if (status == HttpStatus.UNAUTHORIZED) {
+                        handleStatusUnauthorized(response);
+                    } else if (status == HttpStatus.BAD_REQUEST) {
+                        handleStatusBadRequest(response);
+                    } else if (status == HttpStatus.NOT_FOUND) {
+                        handleStatusNotFound(response);
+                    } else if (status == HttpStatus.UNSUPPORTED_MEDIA_TYPE) {
+                        handleStatusUnsupportedMediaType(response);
                     } else {
-                        final String body = bodyToString(response.getBody());
-                        if (httpStatus == HttpStatus.BAD_REQUEST) {
-                            final ObjectMapper mapper = new ObjectMapper();
-                            final Error error = mapper.readValue(body, Error.class);
-                            throw new ESignAnywhereClientException(httpStatus.value(), error); 
-                        } 
-                        throw new ESignAnywhereClientException(httpStatus.value(), body);
+                        handleOthers(status, response);
                     }
                 }
             } catch (final IOException e) {
-                throw new ESignAnywhereClientException("Failed to evaluate response", e);
+                throw new ESignAnywhereClientException(Messages.getMessage("failed.to.evaluate.response"), e);
             }
         }    
+
+        private void handleStatusUnauthorized(final ClientHttpResponse response) throws IOException {
+            throw new ESignAnywhereClientException(HttpStatus.UNAUTHORIZED.value(), HttpStatus.UNAUTHORIZED.getReasonPhrase());
+        }
+
+        private void handleStatusNotFound(final ClientHttpResponse response) throws IOException {
+            handleStatusWithErrorBody(HttpStatus.NOT_FOUND, response);
+        } 
+
+        private void handleStatusBadRequest(final ClientHttpResponse response) throws IOException {
+            handleStatusWithErrorBody(HttpStatus.BAD_REQUEST, response);
+        } 
+
+        private void handleStatusUnsupportedMediaType(final ClientHttpResponse response) throws IOException {
+            handleStatusWithErrorBody(HttpStatus.UNSUPPORTED_MEDIA_TYPE, response);
+        } 
+
+        private void handleOthers(final HttpStatus status, ClientHttpResponse response) throws IOException {
+            String message;
+            try {
+                message = bodyToString(response.getBody());
+            } catch (final IOException e) {
+                message = status.getReasonPhrase();
+            }
+            throw new ESignAnywhereClientException(status.value(), message); 
+        } 
+
+        private void handleStatusWithErrorBody(final HttpStatus status, final ClientHttpResponse response) throws IOException {
+            final String body = bodyToString(response.getBody());
+            final ObjectMapper mapper = new ObjectMapper();
+            final Error error = mapper.readValue(body, Error.class);
+            throw new ESignAnywhereClientException(status.value(), error); 
+        }
 
         private String bodyToString(final InputStream body) throws IOException {
             final StringBuilder builder = new StringBuilder();
