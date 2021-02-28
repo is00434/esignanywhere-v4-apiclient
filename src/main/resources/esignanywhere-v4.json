@@ -7459,7 +7459,6 @@
             },
             "IsPhoneNumberRequired": {
               "description": "Define if the phone number should be required.",
-              "readOnly": true,
               "type": "boolean"
             },
             "Id": {
@@ -7530,7 +7529,6 @@
             },
             "IsPhoneNumberRequired": {
               "description": "Define if the phonenumber should be required.",
-              "readOnly": true,
               "type": "boolean"
             },
             "Id": {
