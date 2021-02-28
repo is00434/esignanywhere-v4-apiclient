@@ -34,7 +34,7 @@ import io.swagger.annotations.ApiModelProperty;
   SigStringsForParsing.JSON_PROPERTY_SEARCH_ENTIRE_WORD_ONLY
 })
 @JsonTypeName("SigStringsForParsing")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-02-13T11:25:21.496783+01:00[Europe/Berlin]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-02-28T10:42:13.714738+01:00[Europe/Berlin]")
 public class SigStringsForParsing {
   public static final String JSON_PROPERTY_START_PATTERN = "StartPattern";
   private String startPattern;

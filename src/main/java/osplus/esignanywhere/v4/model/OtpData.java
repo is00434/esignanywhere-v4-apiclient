@@ -29,7 +29,7 @@ import io.swagger.annotations.ApiModelProperty;
   OtpData.JSON_PROPERTY_PHONE_MOBILE
 })
 @JsonTypeName("OtpData")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-02-13T11:25:21.496783+01:00[Europe/Berlin]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-02-28T10:42:13.714738+01:00[Europe/Berlin]")
 public class OtpData {
   public static final String JSON_PROPERTY_PHONE_MOBILE = "PhoneMobile";
   private String phoneMobile;

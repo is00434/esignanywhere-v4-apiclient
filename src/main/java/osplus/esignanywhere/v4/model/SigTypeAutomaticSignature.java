@@ -38,7 +38,7 @@ import io.swagger.annotations.ApiModelProperty;
   SigTypeAutomaticSignature.JSON_PROPERTY_STAMP_IMPRINT_CONFIGURATION
 })
 @JsonTypeName("SigTypeAutomaticSignature")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-02-13T11:25:21.496783+01:00[Europe/Berlin]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-02-28T10:42:13.714738+01:00[Europe/Berlin]")
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.EXISTING_PROPERTY, property = "DiscriminatorType", visible = true)
 
 public class SigTypeAutomaticSignature extends SigType {

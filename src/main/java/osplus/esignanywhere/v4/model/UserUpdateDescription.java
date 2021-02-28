@@ -55,7 +55,7 @@ import io.swagger.annotations.ApiModelProperty;
   UserUpdateDescription.JSON_PROPERTY_AUTHENTICATIONS
 })
 @JsonTypeName("UserUpdateDescription")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-02-13T11:25:21.496783+01:00[Europe/Berlin]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-02-28T10:42:13.714738+01:00[Europe/Berlin]")
 public class UserUpdateDescription {
   public static final String JSON_PROPERTY_EMAIL = "Email";
   private String email;

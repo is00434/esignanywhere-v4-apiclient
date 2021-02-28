@@ -34,7 +34,7 @@ import io.swagger.annotations.ApiModelProperty;
   SentDocument.JSON_PROPERTY_FORM_FIELDS
 })
 @JsonTypeName("SentDocument")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-02-13T11:25:21.496783+01:00[Europe/Berlin]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-02-28T10:42:13.714738+01:00[Europe/Berlin]")
 public class SentDocument {
   public static final String JSON_PROPERTY_PAGE_SIZES_IN_POINTS = "PageSizesInPoints";
   private List<Size> pageSizesInPoints = null;

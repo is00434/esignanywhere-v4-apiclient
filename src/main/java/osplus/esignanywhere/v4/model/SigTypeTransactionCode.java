@@ -42,7 +42,7 @@ import io.swagger.annotations.ApiModelProperty;
   SigTypeTransactionCode.JSON_PROPERTY_STAMP_IMPRINT_CONFIGURATION
 })
 @JsonTypeName("SigTypeTransactionCode")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-02-13T11:25:21.496783+01:00[Europe/Berlin]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-02-28T10:42:13.714738+01:00[Europe/Berlin]")
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.EXISTING_PROPERTY, property = "DiscriminatorType", visible = true)
 
 public class SigTypeTransactionCode extends SigType {
@@ -230,6 +230,12 @@ public class SigTypeTransactionCode extends SigType {
   }
 
 
+  public SigTypeTransactionCode isPhoneNumberRequired(Boolean isPhoneNumberRequired) {
+    
+    this.isPhoneNumberRequired = isPhoneNumberRequired;
+    return this;
+  }
+
    /**
    * Define if the phone number should be required.
    * @return isPhoneNumberRequired
@@ -244,6 +250,9 @@ public class SigTypeTransactionCode extends SigType {
   }
 
 
+  public void setIsPhoneNumberRequired(Boolean isPhoneNumberRequired) {
+    this.isPhoneNumberRequired = isPhoneNumberRequired;
+  }
 
 
   public SigTypeTransactionCode id(String id) {

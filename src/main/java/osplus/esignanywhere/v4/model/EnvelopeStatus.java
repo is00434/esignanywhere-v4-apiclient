@@ -45,7 +45,7 @@ import io.swagger.annotations.ApiModelProperty;
   EnvelopeStatus.JSON_PROPERTY_BASIC_OPTIONS
 })
 @JsonTypeName("EnvelopeStatus")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-02-13T11:25:21.496783+01:00[Europe/Berlin]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-02-28T10:42:13.714738+01:00[Europe/Berlin]")
 public class EnvelopeStatus {
   /**
    * The overall status of the envelope or the bulk status in case of a bulk.

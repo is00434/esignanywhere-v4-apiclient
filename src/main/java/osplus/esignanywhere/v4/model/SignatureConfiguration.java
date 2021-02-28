@@ -34,7 +34,7 @@ import io.swagger.annotations.ApiModelProperty;
   SignatureConfiguration.JSON_PROPERTY_CERTIFICATE_FILTER
 })
 @JsonTypeName("SignatureConfiguration")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-02-13T11:25:21.496783+01:00[Europe/Berlin]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-02-28T10:42:13.714738+01:00[Europe/Berlin]")
 public class SignatureConfiguration {
   public static final String JSON_PROPERTY_SPC_ID = "SpcId";
   private String spcId;

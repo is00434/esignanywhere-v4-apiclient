@@ -31,7 +31,7 @@ import io.swagger.annotations.ApiModelProperty;
   AddFormFieldChoiceItemDescriptor.JSON_PROPERTY_IS_SELECTED
 })
 @JsonTypeName("AddFormFieldChoiceItemDescriptor")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-02-13T11:25:21.496783+01:00[Europe/Berlin]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-02-28T10:42:13.714738+01:00[Europe/Berlin]")
 public class AddFormFieldChoiceItemDescriptor {
   public static final String JSON_PROPERTY_EXPORT_VALUE = "ExportValue";
   private String exportValue;

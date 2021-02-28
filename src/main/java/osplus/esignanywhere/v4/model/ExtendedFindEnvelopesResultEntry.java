@@ -37,7 +37,7 @@ import io.swagger.annotations.ApiModelProperty;
   ExtendedFindEnvelopesResultEntry.JSON_PROPERTY_BULK
 })
 @JsonTypeName("ExtendedFindEnvelopesResultEntry")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-02-13T11:25:21.496783+01:00[Europe/Berlin]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-02-28T10:42:13.714738+01:00[Europe/Berlin]")
 public class ExtendedFindEnvelopesResultEntry {
   /**
    * The status of the envelope.

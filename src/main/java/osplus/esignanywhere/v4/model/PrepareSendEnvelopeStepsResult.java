@@ -33,7 +33,7 @@ import io.swagger.annotations.ApiModelProperty;
   PrepareSendEnvelopeStepsResult.JSON_PROPERTY_ADD_FORM_FIELDS
 })
 @JsonTypeName("PrepareSendEnvelopeStepsResult")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-02-13T11:25:21.496783+01:00[Europe/Berlin]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-02-28T10:42:13.714738+01:00[Europe/Berlin]")
 public class PrepareSendEnvelopeStepsResult {
   public static final String JSON_PROPERTY_AD_HOC_WORKSTEP_CONFIG_RESULT = "AdHocWorkstepConfigResult";
   private WorkstepConfiguration adHocWorkstepConfigResult;

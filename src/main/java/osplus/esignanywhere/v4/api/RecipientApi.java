@@ -20,7 +20,7 @@ import org.springframework.web.client.RestClientException;
 import osplus.esignanywhere.v4.invoker.ApiClient;
 import osplus.esignanywhere.v4.model.ReplaceRecipientData;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-02-17T12:20:17.454180+01:00[Europe/Berlin]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-02-28T10:42:13.714738+01:00[Europe/Berlin]")
 @Component("osplus.esignanywhere.v4.api.RecipientApi")
 public class RecipientApi {
     private ApiClient apiClient;

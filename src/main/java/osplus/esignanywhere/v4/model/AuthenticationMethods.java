@@ -33,7 +33,7 @@ import io.swagger.annotations.ApiModelProperty;
   AuthenticationMethods.JSON_PROPERTY_AUTHENTICATION_METHOD_LIST
 })
 @JsonTypeName("AuthenticationMethods")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-02-13T11:25:21.496783+01:00[Europe/Berlin]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-02-28T10:42:13.714738+01:00[Europe/Berlin]")
 public class AuthenticationMethods {
   public static final String JSON_PROPERTY_AUTHENTICATION_METHOD_LIST = "AuthenticationMethodList";
   private List<AuthenticationMethod> authenticationMethodList = null;

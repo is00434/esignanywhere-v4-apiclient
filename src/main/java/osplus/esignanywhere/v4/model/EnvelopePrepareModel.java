@@ -33,7 +33,7 @@ import io.swagger.annotations.ApiModelProperty;
   EnvelopePrepareModel.JSON_PROPERTY_PREPARE_SEND_ENVELOPE_STEPS_DESCRIPTOR
 })
 @JsonTypeName("EnvelopePrepareModel")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-02-13T11:25:21.496783+01:00[Europe/Berlin]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-02-28T10:42:13.714738+01:00[Europe/Berlin]")
 public class EnvelopePrepareModel {
   public static final String JSON_PROPERTY_SSP_FILE_IDS = "SspFileIds";
   private List<String> sspFileIds = null;

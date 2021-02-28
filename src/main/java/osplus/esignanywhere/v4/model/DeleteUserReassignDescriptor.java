@@ -35,7 +35,7 @@ import io.swagger.annotations.ApiModelProperty;
   DeleteUserReassignDescriptor.JSON_PROPERTY_REASSIGN_ADDRESS_BOOK
 })
 @JsonTypeName("DeleteUserReassignDescriptor")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-02-13T11:25:21.496783+01:00[Europe/Berlin]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-02-28T10:42:13.714738+01:00[Europe/Berlin]")
 public class DeleteUserReassignDescriptor {
   public static final String JSON_PROPERTY_USER_ID = "UserId";
   private String userId;

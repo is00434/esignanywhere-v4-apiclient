@@ -41,7 +41,7 @@ import io.swagger.annotations.ApiModelProperty;
   SendEnvelopeStep.JSON_PROPERTY_USE_DEFAULT_AGREEMENTS
 })
 @JsonTypeName("SendEnvelopeStep")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-02-13T11:25:21.496783+01:00[Europe/Berlin]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-02-28T10:42:13.714738+01:00[Europe/Berlin]")
 public class SendEnvelopeStep {
   public static final String JSON_PROPERTY_ORDER_INDEX = "OrderIndex";
   private Integer orderIndex;

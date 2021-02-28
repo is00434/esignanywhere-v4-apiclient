@@ -49,7 +49,7 @@ import io.swagger.annotations.ApiModelProperty;
   SendEnvelopeRecipient.JSON_PROPERTY_PKCS7_SIGNER_DATA
 })
 @JsonTypeName("SendEnvelopeRecipient")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-02-13T11:25:21.496783+01:00[Europe/Berlin]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-02-28T10:42:13.714738+01:00[Europe/Berlin]")
 public class SendEnvelopeRecipient {
   public static final String JSON_PROPERTY_EMAIL = "Email";
   private String email;

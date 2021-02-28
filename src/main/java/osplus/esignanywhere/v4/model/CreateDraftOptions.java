@@ -37,7 +37,7 @@ import io.swagger.annotations.ApiModelProperty;
   CreateDraftOptions.JSON_PROPERTY_IFRAME_WHITE_LIST
 })
 @JsonTypeName("CreateDraftOptions")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-02-13T11:25:21.496783+01:00[Europe/Berlin]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-02-28T10:42:13.714738+01:00[Europe/Berlin]")
 public class CreateDraftOptions {
   public static final String JSON_PROPERTY_AFTER_SEND_REDIRECT_URL = "AfterSendRedirectUrl";
   private String afterSendRedirectUrl;

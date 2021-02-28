@@ -53,7 +53,7 @@ import io.swagger.annotations.ApiModelProperty;
   EnvelopeStatusRecipient.JSON_PROPERTY_DISCLAIMER_DOCUMENTS
 })
 @JsonTypeName("EnvelopeStatusRecipient")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-02-13T11:25:21.496783+01:00[Europe/Berlin]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-02-28T10:42:13.714738+01:00[Europe/Berlin]")
 public class EnvelopeStatusRecipient {
   public static final String JSON_PROPERTY_ID = "Id";
   private String id;

@@ -34,7 +34,7 @@ import io.swagger.annotations.ApiModelProperty;
   PdfSignatureCryptographicData.JSON_PROPERTY_SIGNING_CERTIFICATE_DESCRIPTOR
 })
 @JsonTypeName("PdfSignatureCryptographicData")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-02-13T11:25:21.496783+01:00[Europe/Berlin]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-02-28T10:42:13.714738+01:00[Europe/Berlin]")
 public class PdfSignatureCryptographicData {
   /**
    * Define the HashAlgorithm for the signature.

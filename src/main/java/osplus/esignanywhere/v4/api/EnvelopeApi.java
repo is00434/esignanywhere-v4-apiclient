@@ -34,7 +34,7 @@ import osplus.esignanywhere.v4.model.PrepareSendEnvelopeStepsResult;
 import osplus.esignanywhere.v4.model.SendEnvelopeResult;
 import osplus.esignanywhere.v4.model.SendRemindersResult;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-02-17T12:20:17.454180+01:00[Europe/Berlin]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-02-28T10:42:13.714738+01:00[Europe/Berlin]")
 @Component("osplus.esignanywhere.v4.api.EnvelopeApi")
 public class EnvelopeApi {
     private ApiClient apiClient;

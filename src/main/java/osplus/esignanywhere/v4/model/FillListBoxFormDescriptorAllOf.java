@@ -33,7 +33,7 @@ import io.swagger.annotations.ApiModelProperty;
   FillListBoxFormDescriptorAllOf.JSON_PROPERTY_DISCRIMINATOR_TYPE
 })
 @JsonTypeName("FillListBoxFormDescriptor_allOf")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-02-13T11:25:21.496783+01:00[Europe/Berlin]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-02-28T10:42:13.714738+01:00[Europe/Berlin]")
 public class FillListBoxFormDescriptorAllOf {
   public static final String JSON_PROPERTY_SELECTED_ITEMS = "SelectedItems";
   private List<String> selectedItems = null;

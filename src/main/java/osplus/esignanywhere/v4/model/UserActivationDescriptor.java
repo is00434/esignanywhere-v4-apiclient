@@ -29,7 +29,7 @@ import io.swagger.annotations.ApiModelProperty;
   UserActivationDescriptor.JSON_PROPERTY_SEND_INVITATION_MAIL
 })
 @JsonTypeName("UserActivationDescriptor")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-02-13T11:25:21.496783+01:00[Europe/Berlin]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-02-28T10:42:13.714738+01:00[Europe/Berlin]")
 public class UserActivationDescriptor {
   public static final String JSON_PROPERTY_SEND_INVITATION_MAIL = "SendInvitationMail";
   private Boolean sendInvitationMail;

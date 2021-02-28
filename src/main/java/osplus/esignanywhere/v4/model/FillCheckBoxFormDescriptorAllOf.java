@@ -31,7 +31,7 @@ import io.swagger.annotations.ApiModelProperty;
   FillCheckBoxFormDescriptorAllOf.JSON_PROPERTY_DISCRIMINATOR_TYPE
 })
 @JsonTypeName("FillCheckBoxFormDescriptor_allOf")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-02-13T11:25:21.496783+01:00[Europe/Berlin]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-02-28T10:42:13.714738+01:00[Europe/Berlin]")
 public class FillCheckBoxFormDescriptorAllOf {
   public static final String JSON_PROPERTY_IS_CHECKED = "IsChecked";
   private Boolean isChecked = false;

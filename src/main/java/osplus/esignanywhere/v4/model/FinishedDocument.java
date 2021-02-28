@@ -37,7 +37,7 @@ import io.swagger.annotations.ApiModelProperty;
   FinishedDocument.JSON_PROPERTY_FORM_FIELDS
 })
 @JsonTypeName("FinishedDocument")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-02-13T11:25:21.496783+01:00[Europe/Berlin]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-02-28T10:42:13.714738+01:00[Europe/Berlin]")
 public class FinishedDocument {
   public static final String JSON_PROPERTY_FLOW_DOCUMENT_ID = "FlowDocumentId";
   private String flowDocumentId;

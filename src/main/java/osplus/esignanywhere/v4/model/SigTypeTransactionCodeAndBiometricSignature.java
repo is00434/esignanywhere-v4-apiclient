@@ -43,7 +43,7 @@ import io.swagger.annotations.ApiModelProperty;
   SigTypeTransactionCodeAndBiometricSignature.JSON_PROPERTY_STAMP_IMPRINT_CONFIGURATION
 })
 @JsonTypeName("SigTypeTransactionCodeAndBiometricSignature")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-02-13T11:25:21.496783+01:00[Europe/Berlin]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-02-28T10:42:13.714738+01:00[Europe/Berlin]")
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.EXISTING_PROPERTY, property = "DiscriminatorType", visible = true)
 
 public class SigTypeTransactionCodeAndBiometricSignature extends SigType {
@@ -259,6 +259,12 @@ public class SigTypeTransactionCodeAndBiometricSignature extends SigType {
   }
 
 
+  public SigTypeTransactionCodeAndBiometricSignature isPhoneNumberRequired(Boolean isPhoneNumberRequired) {
+    
+    this.isPhoneNumberRequired = isPhoneNumberRequired;
+    return this;
+  }
+
    /**
    * Define if the phonenumber should be required.
    * @return isPhoneNumberRequired
@@ -273,6 +279,9 @@ public class SigTypeTransactionCodeAndBiometricSignature extends SigType {
   }
 
 
+  public void setIsPhoneNumberRequired(Boolean isPhoneNumberRequired) {
+    this.isPhoneNumberRequired = isPhoneNumberRequired;
+  }
 
 
   public SigTypeTransactionCodeAndBiometricSignature id(String id) {

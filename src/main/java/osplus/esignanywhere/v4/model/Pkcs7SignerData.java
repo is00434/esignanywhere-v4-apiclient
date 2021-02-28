@@ -33,7 +33,7 @@ import io.swagger.annotations.ApiModelProperty;
   Pkcs7SignerData.JSON_PROPERTY_ALLOWED_PKCS7_SIGNATURE_TYPES
 })
 @JsonTypeName("Pkcs7SignerData")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-02-13T11:25:21.496783+01:00[Europe/Berlin]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-02-28T10:42:13.714738+01:00[Europe/Berlin]")
 public class Pkcs7SignerData {
   /**
    * Gets or Sets allowedPkcs7SignatureTypes

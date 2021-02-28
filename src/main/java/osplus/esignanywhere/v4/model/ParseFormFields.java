@@ -37,7 +37,7 @@ import io.swagger.annotations.ApiModelProperty;
   ParseFormFields.JSON_PROPERTY_PARSE_FORM_FIELD
 })
 @JsonTypeName("ParseFormFields")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-02-13T11:25:21.496783+01:00[Europe/Berlin]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-02-28T10:42:13.714738+01:00[Europe/Berlin]")
 public class ParseFormFields {
   public static final String JSON_PROPERTY_MAP_REQUIRED_FIELDS_TO_REQUIRED_TASK = "MapRequiredFieldsToRequiredTask";
   private Boolean mapRequiredFieldsToRequiredTask;
